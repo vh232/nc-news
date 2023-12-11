@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getArticleById } from "../../api";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 const SingleArticle = () => {
         const [article, setArticle] = useState();
@@ -20,6 +20,8 @@ const SingleArticle = () => {
     const datePosted = new Date(article.created_at);
     return (
       <div className="single-article">
+        <br></br>
+        <Link to="/articles">Back to all articles</Link>
         <h1>{article.title}</h1>
         <img src={article.article_img_url} id="single-article-img" />
         <p className="topic">

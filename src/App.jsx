@@ -5,6 +5,7 @@ import SearchBar from "./components/SearchBar";
 import ViewAllArticles from "./pages/ViewAllArticles";
 import ViewSingleArticle from "./pages/ViewSingleArticle";
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import LandingPage from "./pages/LandingPage";
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
       <Header />
       <SearchBar />
       <Routes>
+      <Route path="/" element={<LandingPage />}/>
       <Route path="/articles" element={<ViewAllArticles />}/>
       <Route path="/articles/:article_id" element={<ViewSingleArticle />}/>
       </Routes>
