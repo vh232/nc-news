@@ -1,6 +1,10 @@
 
 /* articles */
 
+.loading-indicator {
+    text-align: center;
+}
+
 .articles-cards {
     display: flex;
     flex-direction: row;
@@ -10,6 +14,12 @@
 .ant-card-meta-title {
     white-space: pre-line !important;
     text-align: center;
+    margin: -5px;
+  }
+
+.ant-card-meta-description {
+    padding: 0px;
+    margin: -5px;
   }
 
 .article-card {

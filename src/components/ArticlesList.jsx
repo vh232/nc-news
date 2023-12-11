@@ -1,21 +1,28 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ArticlesCards from "./ArticlesCards";
+import { getAllArticles } from "../../api";
 
 const ArticlesList = () => {
   const [articlesList, setArticlesList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("https://nc-be-project.onrender.com/api/articles").then((res) => {
+    getAllArticles().then((res) => {
       setArticlesList(res.data.articles);
+      setIsLoading(false);
     });
   }, []);
 
-  return (
-    <div className="articles-list">
+  if (isLoading) {
+    return <h1 className="loading-indicator">Loading...</h1>;
+  } else {
+    return (
+      <div className="articles-list">
         <ArticlesCards articlesList={articlesList} />
-    </div>
-  );
+      </div>
+    );
+  }
 };
 
 export default ArticlesList;
