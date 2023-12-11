@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card } from 'antd';
+import { Link } from 'react-router-dom';
 const { Meta } = Card;
 
 const ArticlesCards = (props) => {
@@ -16,12 +17,14 @@ const ArticlesCards = (props) => {
   <Card
   className="ant-card"
     cover={
+      <Link to={`/articles/${article.article_id}`} >
       <img
         id="ant-card-image"
         alt="example"
         src={article.article_img_url}
         
       />
+      </Link>
     }
     actions={[
        article.author ,
@@ -29,6 +32,7 @@ const ArticlesCards = (props) => {
       `${article.comment_count} comments`
     ]}
   >
+    <Link to={`/articles/${article.article_id}`} >
     <Meta
       title={article.title}
       description={`Posted: ${datePosted.toLocaleString([], {
@@ -40,10 +44,12 @@ const ArticlesCards = (props) => {
         minute: '2-digit'
       })}`}
     />
+    </Link>
   </Card>
   </div>
      })}
      </div>
+     
   )
 };
 
