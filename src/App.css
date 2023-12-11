@@ -2,6 +2,33 @@
     box-sizing: border-box;
 }
 
+/* Header */
+
+.header-link {
+    text-decoration: none;
+    color: white;
+}
+
+.header-small-link {
+    text-decoration: none;
+    color: white;
+}
+
+.header-small-link :visited{
+    text-decoration: none;
+    color: white;
+}
+
+.drop-down-link {
+    text-decoration: none;
+    color: #1a76d2;
+}
+
+.drop-down-link :visited {
+    text-decoration: none;
+    color: #1a76d2;
+}
+
 /* view all articles */
 .loading-indicator {
     text-align: center;
