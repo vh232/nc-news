@@ -5,6 +5,7 @@ import SearchBar from "./components/SearchBar";
 import ViewAllArticles from "./pages/ViewAllArticles";
 
 function App() {
+  const [count, setCount] = useState(0)
 
   return (
     <div className="app">
