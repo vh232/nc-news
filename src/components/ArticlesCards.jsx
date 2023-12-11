@@ -36,13 +36,13 @@ const ArticlesCards = (props) => {
     <Meta
       title={article.title}
       description={`Posted: ${datePosted.toLocaleString([], {
-        day: 'numeric',
-        month: 'numeric',
-        year: 'numeric',
         hour12: false,
         hour: '2-digit',
-        minute: '2-digit'
-      })}`}
+        minute: '2-digit',
+        day: 'numeric',
+        month: 'numeric',
+        year: '2-digit'
+      })} in: ${article.topic}` }
     />
     </Link>
   </Card>
