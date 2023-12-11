@@ -6,6 +6,7 @@ import ViewAllArticles from "./pages/ViewAllArticles";
 import ViewSingleArticle from "./pages/ViewSingleArticle";
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import LandingPage from "./pages/LandingPage";
+import ArticleComments from "./components/ArticleComments";
 
 function App() {
 
