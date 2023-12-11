@@ -13,6 +13,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import HomeIcon from '@mui/icons-material/Home';
 
 const pages = [<Link to="/articles">View All Articles</Link>, <Link to="/articles">View Articles by Topic</Link>, <Link to="/articles">Post New Article</Link>];
 
@@ -53,7 +54,7 @@ const Header = () => {
               textDecoration: 'none',
             }}
           >
-            <Link className="header-link" to="/">NC-News</Link>
+           NC-News
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -107,7 +108,7 @@ const Header = () => {
               textDecoration: 'none',
             }}
           >
-            <Link className="header-link" to="/">NC-News</Link>
+            NC-News
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page, index) => (
@@ -120,6 +121,7 @@ const Header = () => {
               </Button>
             ))}
           </Box>
+         <Link to="/" className="header-small-link"> <HomeIcon /> </Link>
         </Toolbar>
       </Container>
     </AppBar>
