@@ -17,6 +17,7 @@ function App() {
       <Routes>
       <Route path="/" element={<LandingPage />}/>
       <Route path="/articles" element={<ViewAllArticles />}/>
+      <Route path="/articles/?topic=" element={<ViewAllArticles />}/>
       <Route path="/articles/:article_id" element={<ViewSingleArticle />}/>
       </Routes>
     </div>
