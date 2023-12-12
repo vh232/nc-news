@@ -13,7 +13,10 @@ const SingleArticle = () => {
   const [downvoteClicked, setDownvoteClicked] = useState(false)
 
   const upVote = (article_id) => {
-    if (!upvoteClicked) {
+    if (!upvoteClicked && downvoteClicked) {
+      setDownvoteClicked(false)
+      patchArticle(article_id, {inc_votes: +1})
+    } else if (!upvoteClicked && !downvoteClicked) {
       setUpvoteClicked(true)
       setDownvoteClicked(false)
       patchArticle(article_id, {inc_votes: +1})
@@ -22,10 +25,13 @@ const SingleArticle = () => {
       
   
   const downVote = (article_id) => {
-    if (!downvoteClicked) {
+    if (!downvoteClicked && upvoteClicked) {
     patchArticle(article_id, {inc_votes: -1})
-    setDownvoteClicked(true)
     setUpvoteClicked(false)
+    } else if (!downvoteClicked && !upvoteClicked) {
+      patchArticle(article_id, {inc_votes: -1})
+    setUpvoteClicked(false)
+    setDownvoteClicked(true)
     }
   }
 
