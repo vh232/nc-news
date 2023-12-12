@@ -1,17 +1,17 @@
-import { useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
-import SearchBar from "./components/SearchBar";
 import ViewAllArticles from "./pages/ViewAllArticles";
 import ViewSingleArticle from "./pages/ViewSingleArticle";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
-import ArticleComments from "./components/ArticleComments";
+import { UserProvider } from "./contexts/UserContext";
 import FilterByTopicPage from "./pages/FilterByTopicPage";
 import SortedArticlesList from "./components/SortedArticlesList";
 
+
 function App() {
   return (
+    <UserProvider>
     <BrowserRouter>
       <div className="app">
         <Header />
@@ -23,6 +23,7 @@ function App() {
         </Routes>
       </div>
     </BrowserRouter>
+    </UserProvider>
   );
 }
 

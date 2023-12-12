@@ -91,3 +91,23 @@
 .votes :hover {
     color: green;
 }
+
+/*  */
+
+.submit-comment-btn {
+    background-color: #1a76d2;
+    margin: 0px 6px 0px 10px;
+    color: white;
+}
+
+.form-label {
+    display: flex;
+    justify-content: left;
+    justify-content: space-evenly;
+    width: 100vw;
+    margin: 20px 0px 20px 0px;
+}
+
+#add-comment {
+    width: 80vw;
+}

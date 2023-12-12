@@ -4,11 +4,16 @@ import Chip from "@mui/material/Chip";
 import { useEffect, useState } from "react";
 import { getArticleComments } from "../../api";
 import { useParams } from "react-router-dom";
+import AddNewComment from "./AddAComment";
+import DeleteComment from "./DeleteComment";
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 
 const ArticleComments = () => {
   const [comments, setComments] = useState();
   const { article_id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
+  const { username } = useContext(UserContext)
 
   useEffect(() => {
     getArticleComments(article_id)
@@ -33,6 +38,8 @@ const ArticleComments = () => {
     return <h1 className="loading-indicator">Loading...</h1>;
   } else {
     return (
+      <>
+      <AddNewComment setComments={setComments} comments={comments}/>
       <div className="article-comment-list">
         <Root>
           {comments.map((comment) => {
@@ -50,13 +57,17 @@ const ArticleComments = () => {
                     hour12: false,
                     hour: "2-digit",
                     minute: "2-digit",
-                  })}
+                  })}{" "}
+                  {username === comment.author ? <DeleteComment comment_id={comment.comment_id} comments={comments} setComments={setComments}/> : ''}
                 </div>
               </div>
             );
           })}
+          
         </Root>
+        
       </div>
+      </>
     );
   }
 };
