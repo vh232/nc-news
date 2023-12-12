@@ -76,3 +76,9 @@ export const deleteOwnComment = (id) => {
     return res.status;
   });
 };
+
+export const getOrderedSort = (order, sortBy) => {
+  return api.get(`/articles/?order=${order}&sort_by=${sortBy}`).then((res)=>{
+    return res.data.articles
+  })
+}

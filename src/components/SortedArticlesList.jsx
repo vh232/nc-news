@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ArticlesCards from "./ArticlesCards";
-import { filterByTopic, getAllArticles, sortArticlesBy } from "../../api";
+import { filterByTopic, getAllArticles, getOrderedSort, sortArticlesBy } from "../../api";
 import { useSearchParams } from "react-router-dom";
 
 
@@ -10,14 +10,25 @@ const SortedArticlesList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const topicFilter = searchParams.get("topic");
   const selectedSortBy = searchParams.get("sort_by");
+  const orderBy = searchParams.get("order")
  
+  if (orderBy) {
+    useEffect(() => {
+      getOrderedSort(orderBy, selectedSortBy).then((articles) => {
+        setArticlesList(articles);
+        setIsLoading(false);
+      });
+    }, [selectedSortBy, orderBy]);
+  } else {
+    useEffect(() => {
+      sortArticlesBy(selectedSortBy).then((articles) => {
+        setArticlesList(articles);
+        setIsLoading(false);
+      });
+    }, [selectedSortBy, orderBy]);
+  }
 
-  useEffect(() => {
-    sortArticlesBy(selectedSortBy).then((articles) => {
-      setArticlesList(articles);
-      setIsLoading(false);
-    });
-  }, [selectedSortBy]);
+  
 
   if (isLoading) {
     return <h1 className="loading-indicator">Loading...</h1>;
