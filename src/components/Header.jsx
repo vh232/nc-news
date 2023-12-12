@@ -15,7 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import HomeIcon from '@mui/icons-material/Home';
 
-const pages = [<Link to="/articles">View All Articles</Link>, <Link to="/articles">View Articles by Topic</Link>, <Link to="/articles">Post New Article</Link>];
+const pages = [<Link to="/articles">View All Articles</Link>, <Link to="/">View Articles by Topic</Link>, <Link to="/">Post New Article</Link>];
 
 const Header = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);

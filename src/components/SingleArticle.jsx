@@ -1,18 +1,46 @@
 import { useEffect, useState } from "react";
-import { getArticleById } from "../../api";
+import { getArticleById, patchArticle } from "../../api";
 import { useParams, Link } from "react-router-dom";
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
 
 const SingleArticle = () => {
-        const [article, setArticle] = useState();
+
+  const [article, setArticle] = useState();
   const { article_id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
+  const [upvoteClicked, setUpvoteClicked] = useState(false)
+  const [downvoteClicked, setDownvoteClicked] = useState(false)
+
+  const upVote = (article_id) => {
+    if (!upvoteClicked && downvoteClicked) {
+      setDownvoteClicked(false)
+      patchArticle(article_id, {inc_votes: +1})
+    } else if (!upvoteClicked && !downvoteClicked) {
+      setUpvoteClicked(true)
+      setDownvoteClicked(false)
+      patchArticle(article_id, {inc_votes: +1})
+    }
+      }
+      
+  
+  const downVote = (article_id) => {
+    if (!downvoteClicked && upvoteClicked) {
+    patchArticle(article_id, {inc_votes: -1})
+    setUpvoteClicked(false)
+    } else if (!downvoteClicked && !upvoteClicked) {
+      patchArticle(article_id, {inc_votes: -1})
+    setUpvoteClicked(false)
+    setDownvoteClicked(true)
+    }
+  }
 
   useEffect(() => {
     getArticleById(article_id).then((singleArticle) => {
-      setArticle(singleArticle);
+      setArticle(singleArticle)
       setIsLoading(false);
-    });
-  }, []);
+    })
+  }, [article]);
 
   if (isLoading) {
     return <h1 className="loading-indicator">Loading...</h1>;
@@ -37,11 +65,13 @@ const SingleArticle = () => {
           hour: "2-digit",
           minute: "2-digit",
         })}`}</p>
-        <p className="votes">votes: {article.votes}</p>
-        <p className="comment_count">comments: {article.comment_count}</p>
+        <p className="votes"> <ThumbUpAltIcon fontSize="small" tabindex='0' onClick={() => {upVote(article.article_id)}}/>  
+        <ThumbDownAltIcon fontSize="small" tabindex='0' onClick={() => {downVote(article.article_id)}}/>  votes: {article.votes} comments: {article.comment_count}</p>
+        
+        
       </div>
     );
     }
-}
+  }
 
 export default SingleArticle;
