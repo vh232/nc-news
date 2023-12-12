@@ -1,5 +1,6 @@
 import SingleArticle from "../components/SingleArticle";
 import ArticleComments from "../components/ArticleComments";
+import AddNewComment from "../components/AddAComment";
 
 const ViewSingleArticle = () => {
   return (
