@@ -33,3 +33,11 @@ export const filterByTopic = (topic) => {
         console.log(err)
     })
 }
+
+export const getTopicsList = () => {
+    return api.get(`/topics`).then((res)=>{
+        return res.data.topics
+    }).catch((err)=>{
+        return err
+    })
+}

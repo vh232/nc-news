@@ -7,6 +7,7 @@ import ViewSingleArticle from "./pages/ViewSingleArticle";
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import LandingPage from "./pages/LandingPage";
 import ArticleComments from "./components/ArticleComments";
+import FilterByTopicPage from "./pages/FilterByTopicPage";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
       <Route path="/articles" element={<ViewAllArticles />}/>
       <Route path="/articles/?topic=" element={<ViewAllArticles />}/>
       <Route path="/articles/:article_id" element={<ViewSingleArticle />}/>
+      <Route path="/topics" element={<FilterByTopicPage />} />
       </Routes>
     </div>
     </BrowserRouter>

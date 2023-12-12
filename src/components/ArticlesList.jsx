@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import ArticlesCards from "./ArticlesCards";
 import { filterByTopic, getAllArticles } from "../../api";
@@ -18,7 +17,6 @@ const ArticlesList = () => {
       })
     }) 
 
-
   if (isLoading) {
     return <h1 className="loading-indicator">Loading...</h1>;
   } else {
@@ -37,7 +35,6 @@ const ArticlesList = () => {
       setIsLoading(false);
     });
   }, []);
-
 
   if (isLoading) {
     return <h1 className="loading-indicator">Loading...</h1>;
