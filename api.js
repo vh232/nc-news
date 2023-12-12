@@ -25,3 +25,9 @@ export const patchArticle = (id, vote) => {
         return res.data.updatedArticle
     })
 }
+
+export const deleteOwnComment = (id) => {
+    return api.delete(`/comments/${id}`).then((res) => {
+        return res.status
+    })
+}
