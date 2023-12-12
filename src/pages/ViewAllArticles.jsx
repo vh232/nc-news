@@ -7,16 +7,16 @@ import { useState } from "react";
 import OrderByDropDown from "../components/OrderByDropDown";
 
 const ViewAllArticles = () => {
-  const [orderBy, setOrderBy] = useState('desc')
   const [searchParams, setSearchParams] = useSearchParams();
   const sortedBy = searchParams.get("sort_by");
+  const filteredBy = searchParams.get("topic");
 
   if (sortedBy) {
     return (
       <>
       <div className="dropdown-menus">
-      <SortByDropDown orderBy={orderBy} />
-      <OrderByDropDown setOrderBy={setOrderBy} orderBy={orderBy}/>
+      <SortByDropDown />
+      <OrderByDropDown />
       <FilterByDropDown />
       </div>
       <SortedArticlesList />

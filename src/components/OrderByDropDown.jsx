@@ -5,16 +5,17 @@ import { Link,  } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
 
 
-const OrderByDropDown = (props) => {
+const OrderByDropDown = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const selectedSortBy = searchParams.get("sort_by");
+    const selectedFilterBy = searchParams.get("topic");
     const items = [
         {
-          label: <Link to={`/articles/?order=asc&sort_by=${selectedSortBy}`}>Ascending</Link>,
+          label: <Link to={(selectedFilterBy) ? `/articles/?order=asc&sort_by=${selectedSortBy}&topic=${selectedFilterBy}` :`/articles/?order=asc&sort_by=${selectedSortBy}`}>Ascending</Link>,
           key: '1'
         },
         {
-          label: <Link to={`/articles/?order=desc&sort_by=${selectedSortBy}`}>Descending</Link>,
+          label:  <Link to={(selectedFilterBy) ? `/articles/?order=desc&sort_by=${selectedSortBy}&topic=${selectedFilterBy}` :`/articles/?order=desc&sort_by=${selectedSortBy}`}>Descending</Link>,
           key: '2'
         }
       ];

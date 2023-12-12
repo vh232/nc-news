@@ -82,3 +82,9 @@ export const getOrderedSort = (order, sortBy) => {
     return res.data.articles
   })
 }
+
+export const getOrderedFilteredSort = (order, sortBy, filter) => {
+  return api.get(`/articles/?order=${order}&sort_by=${sortBy}&topic=${filter}`).then((res)=>{
+    return res.data.articles
+  })
+}

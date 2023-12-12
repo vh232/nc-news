@@ -2,13 +2,17 @@ import React from "react";
 import { DownOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Dropdown, message, Space, Tooltip } from "antd";
 import { Link } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
-const SortByDropDown = (props) => {
+const SortByDropDown = () => {
 
-  const { orderBy } = props
+  const [searchParams, setSearchParams] = useSearchParams();
+  const topic = searchParams.get('topic')
+  
+
   const items = [
     {
-      label: <Link to={`/articles/?sort_by=author`}>Author</Link>,
+      label: <Link to={(topic) ? `/articles/?topic=${topic}&sort_by=author&` : `/articles/?sort_by=author`}>Author</Link>,
       key: "1",
     },
     {
