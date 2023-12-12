@@ -28,7 +28,7 @@ export const patchArticle = (id, vote) => {
 
 export const filterByTopic = (topic) => {
     return api.get(`/articles/?topic=${topic}`).then((res) => {
-        return res
+        return res.data.articles
     }).catch((err) => {
         console.log(err)
     })

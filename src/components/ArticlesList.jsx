@@ -12,19 +12,32 @@ const ArticlesList = () => {
 
   if (topicFilter) {
     useEffect(() => {
-      filterByTopic(topicFilter).then((res) => {
-        console.log(res, 'response')
+      filterByTopic(topicFilter).then((articles) => {
+        setArticlesList(articles);
+        setIsLoading(false);
       })
-    })
-  } else {
+    }) 
 
+
+  if (isLoading) {
+    return <h1 className="loading-indicator">Loading...</h1>;
+  } else {
+    return (
+      <div className="articles-list">
+        <h2>You are viewing articles in: {topicFilter}</h2>
+        <ArticlesCards articlesList={articlesList} />
+      </div>
+    );
+  }
+
+  } else {
   useEffect(() => {
     getAllArticles().then((res) => {
       setArticlesList(res.data.articles);
       setIsLoading(false);
     });
   }, []);
-}
+
 
   if (isLoading) {
     return <h1 className="loading-indicator">Loading...</h1>;
@@ -36,5 +49,7 @@ const ArticlesList = () => {
     );
   }
 };
+}
+
 
 export default ArticlesList;
