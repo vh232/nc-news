@@ -81,3 +81,7 @@
 .comment-info {
     text-align: center;
 }
+
+.votes :hover {
+    color: green;
+}

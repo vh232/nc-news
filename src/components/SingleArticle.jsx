@@ -65,8 +65,8 @@ const SingleArticle = () => {
           hour: "2-digit",
           minute: "2-digit",
         })}`}</p>
-        <p className="votes"> <ThumbUpAltIcon fontSize="small" onClick={() => {upVote(article.article_id)}}/>  
-        <ThumbDownAltIcon fontSize="small" onClick={() => {downVote(article.article_id)}}/>  votes: {article.votes} comments: {article.comment_count}</p>
+        <p className="votes"> <ThumbUpAltIcon fontSize="small" tabindex='0' onClick={() => {upVote(article.article_id)}}/>  
+        <ThumbDownAltIcon fontSize="small" tabindex='0' onClick={() => {downVote(article.article_id)}}/>  votes: {article.votes} comments: {article.comment_count}</p>
         
         
       </div>
