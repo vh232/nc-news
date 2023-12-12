@@ -22,14 +22,10 @@ const AddNewComment = (props) => {
     setNewComment({ ...newComment }, (newComment.body = commentBody));
 
     postComment(article_id, newComment).then((newCommentFromAPI) => {
-      if (newCommentFromAPI.code) {
-        
-      } else {
         setCommentBody("");
         setComments((currComments) => {
           return [newCommentFromAPI, ...currComments];
         });
-      }
     });
   };
 
