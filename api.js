@@ -25,3 +25,12 @@ export const patchArticle = (id, vote) => {
         return res.data.updatedArticle
     })
 }
+
+export const postComment = (id, newComment) => {
+    return api.post(`/articles/${id}/comments`, newComment).then((res) => {
+        return res.data.postedComment
+    }).catch((err) => {
+        console.log(err)
+        return err
+    })
+}

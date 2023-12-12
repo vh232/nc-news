@@ -4,6 +4,7 @@ import Chip from "@mui/material/Chip";
 import { useEffect, useState } from "react";
 import { getArticleComments } from "../../api";
 import { useParams } from "react-router-dom";
+import AddNewComment from "./AddAComment";
 
 const ArticleComments = () => {
   const [comments, setComments] = useState();
@@ -33,6 +34,8 @@ const ArticleComments = () => {
     return <h1 className="loading-indicator">Loading...</h1>;
   } else {
     return (
+      <>
+      <AddNewComment setComments={setComments} comments={comments}/>
       <div className="article-comment-list">
         <Root>
           {comments.map((comment) => {
@@ -57,6 +60,7 @@ const ArticleComments = () => {
           })}
         </Root>
       </div>
+      </>
     );
   }
 };
