@@ -41,3 +41,11 @@ export const getTopicsList = () => {
         return err
     })
 }
+
+export const sortArticlesBy = (sortBy) => {
+    return api.get(`/articles/?sort_by=${sortBy}`).then((res) => {
+        return res.data.articles
+    }).catch((err) => {
+        console.log(err)
+    })
+}

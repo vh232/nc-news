@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ArticlesCards from "./ArticlesCards";
-import { filterByTopic, getAllArticles } from "../../api";
+import { filterByTopic, getAllArticles, sortArticlesBy } from "../../api";
 import { useSearchParams } from "react-router-dom";
 
 const ArticlesList = () => {

@@ -4,7 +4,7 @@ const FilterByTopicPage = () => {
 
     return (
         <>
-            <h1>filter by topic</h1>
+            <h1>Filter articles by topic</h1>
             <TopicsList />
         </>
     )

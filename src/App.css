@@ -30,6 +30,12 @@
 }
 
 /* view all articles */
+.dropdown-menus {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
 .loading-indicator {
     text-align: center;
 }
