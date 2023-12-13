@@ -2,9 +2,26 @@ import axios from "axios";
 
 const api = axios.create({ baseURL: "https://nc-be-project.onrender.com/api" });
 
-export const getAllArticles = () => {
-  return api.get("/articles").then((res) => {
-    return res;
+export const getAllArticles = (filter, sortBy, orderBy) => {
+  let url = '/articles'
+  if (!filter && !sortBy && !orderBy) {
+    return api.get(url).then((res) => {
+      return res;
+    });
+  }
+  if (filter && sortBy && orderBy) {
+    url = `/articles/?order=${orderBy}&sort_by=${sortBy}&topic=${filter}`
+  } else if (filter && sortBy) {
+    url = `/articles/?sort_by=${sortBy}&topic=${filter}`
+  } else if (sortBy && orderBy) {
+    url = `/articles/?sort_by=${sortBy}&order=${orderBy}`
+  } else if (filter && orderBy) {
+    url = `/articles/?topic=${filter}&order=${orderBy}`
+  } else if (sortBy) {
+    url = `/articles/?sort_by=${sortBy}`
+  }
+  return api.get(url).then((res) => {
+    return res.data.articles;
   });
 };
 

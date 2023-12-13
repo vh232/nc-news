@@ -12,21 +12,21 @@ const SortByDropDown = () => {
 
   const items = [
     {
-      label: <Link to={(topic) ? `/articles/?topic=${topic}&sort_by=author&` : `/articles/?sort_by=author`}>Author</Link>,
+      label: <Link to={(topic) ? `/articles/?sort_by=author&order=ASC&topic=${topic}` : `/articles/?sort_by=author&order=ASC`}>Author</Link>,
       key: "1",
     },
     {
       label: (
-        <Link to={`/articles/?sort_by=created_at`}>Most Recent</Link>
+        <Link to={(topic) ? `/articles/?sort_by=created_at&topic=${topic}` : `/articles/?sort_by=created_at`}>Most Recent</Link>
       ),
       key: "2",
     },
     {
-      label: <Link to={`/articles/?sort_by=title`}>Title</Link>,
+      label: <Link to={(topic) ? `/articles/?sort_by=title&order=asc&topic=${topic}` : `/articles/?sort_by=title&order=asc`}>Title</Link>,
       key: "3",
     },
     {
-      label: <Link to={`/articles/?sort_by=topic`}>Topic</Link>,
+      label: <Link to={(topic) ? `/articles/?sort_by=topic&order=asc&topic=${topic}` : `/articles/?sort_by=topic&order=asc`}>Topic</Link>,
       key: "4",
     },
   ];

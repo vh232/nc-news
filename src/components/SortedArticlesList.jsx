@@ -18,39 +18,14 @@ const SortedArticlesList = () => {
   const selectedFilterBy = searchParams.get("topic");
   const orderBy = searchParams.get("order");
 
-  if (orderBy && !selectedFilterBy) {
-    useEffect(() => {
-      getOrderedSort(orderBy, selectedSortBy).then((articles) => {
-        setArticlesList(articles);
-        setIsLoading(false);
-      });
-    }, [selectedSortBy, orderBy, selectedFilterBy]);
-  } else if (!orderBy && selectedFilterBy) {
-    useEffect(() => {
-      getOrderedFilteredSort("desc", selectedSortBy, selectedFilterBy).then(
-        (articles) => {
-          setArticlesList(articles);
-          setIsLoading(false);
-        }
-      );
-    }, [selectedSortBy, orderBy, selectedFilterBy]);
-  } else if (orderBy && selectedFilterBy) {
-    useEffect(() => {
-      getOrderedFilteredSort(orderBy, selectedSortBy, selectedFilterBy).then(
-        (articles) => {
-          setArticlesList(articles);
-          setIsLoading(false);
-        }
-      );
-    }, [selectedSortBy, orderBy, selectedFilterBy]);
-  } else {
-    useEffect(() => {
-      sortArticlesBy(selectedSortBy).then((articles) => {
-        setArticlesList(articles);
-        setIsLoading(false);
-      })
-    }, [selectedSortBy, orderBy, selectedFilterBy]);
-  }
+ 
+  useEffect(() => {
+    getAllArticles(selectedFilterBy, selectedSortBy, orderBy).then((articles) => {
+      setArticlesList(articles);
+      setIsLoading(false)
+    })
+  }, [selectedSortBy, selectedFilterBy, orderBy])
+
 
   if (isLoading) {
     return <h1 className="loading-indicator">Loading...</h1>;
