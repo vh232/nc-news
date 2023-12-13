@@ -3,6 +3,8 @@ import { CommentOutlined } from "@ant-design/icons";
 import { FloatButton } from "antd";
 import { postComment } from "../../api";
 import { useParams } from "react-router-dom";
+import ErrorPage from "../error-handling/ErrorPage";
+
 
 const AddNewComment = (props) => {
   const { article_id } = useParams();
@@ -19,14 +21,18 @@ const AddNewComment = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
+   
     setNewComment({ ...newComment }, (newComment.body = commentBody));
-
+    if (newComment.body === '') {
+      
+    } else {
     postComment(article_id, newComment).then((newCommentFromAPI) => {
         setCommentBody("");
         setComments((currComments) => {
           return [newCommentFromAPI, ...currComments];
         });
     });
+  }
   };
 
   return (
