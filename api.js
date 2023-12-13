@@ -26,17 +26,17 @@ export const patchArticle = (id, vote) => {
     })
 }
 
-<<<<<<< HEAD
 export const postComment = (id, newComment) => {
     return api.post(`/articles/${id}/comments`, newComment).then((res) => {
         return res.data.postedComment
     }).catch((err) => {
         console.log(err)
         return err
-=======
+    })
+}
+
 export const deleteOwnComment = (id) => {
     return api.delete(`/comments/${id}`).then((res) => {
         return res.status
->>>>>>> main
     })
 }

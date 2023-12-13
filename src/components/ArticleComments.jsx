@@ -4,13 +4,10 @@ import Chip from "@mui/material/Chip";
 import { useEffect, useState } from "react";
 import { getArticleComments } from "../../api";
 import { useParams } from "react-router-dom";
-<<<<<<< HEAD
 import AddNewComment from "./AddAComment";
-=======
 import DeleteComment from "./DeleteComment";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
->>>>>>> main
 
 const ArticleComments = () => {
   const [comments, setComments] = useState();
