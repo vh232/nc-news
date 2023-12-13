@@ -36,7 +36,7 @@ const SortByDropDown = () => {
 
   return (
     <Space wrap>
-      <Dropdown menu={menuProps}>
+      <Dropdown menu={menuProps} className="sort-by-drop-down">
         <Button>
           <Space>
             Sort By

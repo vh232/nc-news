@@ -3,6 +3,7 @@ import { getArticleById, patchArticle } from "../../api";
 import { useParams, Link } from "react-router-dom";
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const SingleArticle = () => {
 
@@ -49,14 +50,19 @@ const SingleArticle = () => {
     return (
       <div className="single-article">
         <br></br>
-        <Link to="/articles">Back to all articles</Link>
+        <section className="article-title">
+        <Link to="/articles" className="back-arrow"><ArrowBackIcon fontSize="large"/></Link>
         <h1>{article.title}</h1>
-        <img src={article.article_img_url} id="single-article-img" />
+        </section>
+        
+        <img className="single-article-img" src={article.article_img_url}/>
+        <p className="body">{article.body}</p>
         <p className="topic">
           topic: {article.topic} written by: {article.author}
         </p>
         <p className="author"></p>
-        <p className="body">{article.body}</p>
+        
+       
         <p className="created-at">{`Posted: ${datePosted.toLocaleString([], {
           day: "numeric",
           month: "numeric",

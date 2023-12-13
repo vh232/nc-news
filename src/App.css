@@ -1,113 +1,190 @@
+/* COLOUR PALETTE
+dark blue - #022b3a;
+dark red - #4a051c;
+light blue - #bfdbf7;
+lavender - #e1e5f2
+medium pink - #bf98a0;
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;800&display=swap");
+
 * {
-    box-sizing: border-box;
+  box-sizing: content-box;
+  font-family: "Outfit", sans-serif;
+}
+
+html {
+  background-color: #e1e5f2;
+}
+
+.app {
+  background-color: #e1e5f2;
+}
+
+a {
+  text-decoration: none;
 }
 
 /* Header */
 
+.header-container {
+  background-color: #022b3a;
+  color: #e1e5f2;
+}
+
 .header-link {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: #e1e5f2;
+  font-family: "Outfit", sans-serif;
 }
 
 .header-small-link {
-    text-decoration: none;
-    color: white;
+  color: #e1e5f2;
+  font-family: "Outfit", sans-serif;
 }
 
-.header-small-link :visited{
-    text-decoration: none;
-    color: white;
+.header-small-link :visited {
+  color: #e1e5f2;
+  font-family: "Outfit", sans-serif;
+}
+
+.header-home-link {
+  color: #bf98a0;
 }
 
 .drop-down-link {
-    text-decoration: none;
-    color: #1a76d2;
+  color: #022b3a;
+  font-family: "Outfit", sans-serif;
 }
 
 .drop-down-link :visited {
-    text-decoration: none;
-    color: #1a76d2;
+  color: #4a051c;
+  font-family: "Outfit", sans-serif;
+}
+
+.drop-down-link :hover {
+  color: #4a051c;
 }
 
 /* view all articles */
 .dropdown-menus {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
 }
 
 .loading-indicator {
-    text-align: center;
+  text-align: center;
 }
 
 .articles-cards {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: stretch;
 }
 
 .ant-card-meta-title {
-    white-space: pre-line !important;
-    text-align: center;
-    margin: -5px;
-  }
+  white-space: pre-line !important;
+  text-align: center;
+  margin-top: -5px;
+}
+
+.ant-card .ant-card-meta-title {
+  white-space: pre-line !important;
+  text-align: center;
+  margin-top: -5px;
+  color: #022b3a;
+}
 
 .ant-card-meta-description {
-    padding: 0px;
-    margin-top: -5px;
-    margin-bottom: -3px;
-  }
+  padding: 0px;
+  margin-top: -5px;
+  margin-bottom: -3px;
+}
 
 .article-card {
-    text-align: center;
-    margin: 10px;
+  text-align: center;
+  margin: 10px;
 }
 
 .ant-card {
-    width: 300px;
+  width: 300px;
+  background-color: #e1e5f2;
+  border-color: #022b3a;
+  border-width: 2px;
+  height: 100%;
 }
 
 #ant-card-image {
-    height: 20vh;
-    object-fit: cover;
+  height: 20vh;
+  object-fit: cover;
+  margin-top: 10px;
+  max-width: 280px;
+}
+
+.ant-card .ant-card-actions {
+  border-color: #022b3a;
+  border-width: 2px;
+  background-color: #e1e5f2;
 }
 
 /* single articles */
 
-#single-article-img {
-    width: 90vw;
-    max-height: 700px;
-    max-width: 800px;
-    margin: 0px;
-    padding: 0px;
-    text-align: center;
+.single-article-img {
+  width: 90vw;
+  max-height: 700px;
+  max-width: 800px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px;
+  text-align: center;
+  border-radius: 20px;
 }
 
 .comment-info {
-    text-align: center;
+  text-align: center;
 }
 
 .votes :hover {
-    color: green;
+  color: green;
+}
+
+.article-title {
+  display: flex;
+  font-family: "Outfit", sans-serif;
+  margin: 10px 10px 20px 10px;
+}
+
+.back-arrow {
+  color: #4a051c;
+  align-self: center;
+}
+
+h1 {
+  margin: auto;
+  align-self: center;
+  font-size: 2.5rem;
 }
 
 /*  */
 
 .submit-comment-btn {
-    background-color: #1a76d2;
-    margin: 0px 6px 0px 10px;
-    color: white;
+  background-color: #1a76d2;
+  margin: 0px 6px 0px 10px;
+  color: white;
 }
 
 .form-label {
-    display: flex;
-    justify-content: left;
-    justify-content: space-evenly;
-    width: 100vw;
-    margin: 20px 0px 20px 0px;
+  display: flex;
+  justify-content: left;
+  justify-content: space-evenly;
+  width: 100vw;
+  margin: 20px 0px 20px 0px;
 }
 
 #add-comment {
-    width: 80vw;
+  width: 80vw;
 }
