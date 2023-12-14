@@ -4,7 +4,8 @@ This is a Reddit-clone, built as a front-end project during my time at Northcode
 
 [View the deployed version here](https://nc-news-vh232.netlify.app)
 
-It makes asynchronous API calls to the server I built during my back-end project which can be found here on github and hosted [here](https://nc-be-project.onrender.com).
+It makes asynchronous API calls to the server I built during my back-end project which can be found [here](https://github.com/vh232/NC-be-project).
+ on github and hosted [here](https://nc-be-project.onrender.com).
 
 ## Getting Started
 
