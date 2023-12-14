@@ -82,7 +82,7 @@ const Header = () => {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: 'block', md: 'none', backgroundColor: "default" },
               }}
             >
               {pages.map((page, index) => (

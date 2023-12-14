@@ -28,24 +28,20 @@ a {
 /* Header */
 
 .header-container {
-  background-color: #022b3a;
   color: #e1e5f2;
 }
 
 .header-link {
   text-decoration: none;
   color: #e1e5f2;
-  font-family: "Outfit", sans-serif;
 }
 
 .header-small-link {
   color: #e1e5f2;
-  font-family: "Outfit", sans-serif;
 }
 
 .header-small-link :visited {
   color: #e1e5f2;
-  font-family: "Outfit", sans-serif;
 }
 
 .header-home-link {
@@ -53,18 +49,13 @@ a {
 }
 
 .drop-down-link {
-  color: #022b3a;
-  font-family: "Outfit", sans-serif;
+  color: #e1e5f2;
 }
 
 .drop-down-link :visited {
-  color: #4a051c;
-  font-family: "Outfit", sans-serif;
+  color: #e1e5f2;
 }
 
-.drop-down-link :hover {
-  color: #4a051c;
-}
 
 /* view all articles */
 .dropdown-menus {
@@ -133,12 +124,9 @@ a {
 /* single articles */
 
 .single-article-img {
-  width: 90vw;
-  max-height: 700px;
-  max-width: 800px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  width: 30vw;
+  height: 40vh;
+  object-fit: cover;
   padding: 0px;
   text-align: center;
   border-radius: 20px;
@@ -154,8 +142,11 @@ a {
 
 .article-title {
   display: flex;
+  flex-direction: row;
   font-family: "Outfit", sans-serif;
   margin: 10px 10px 20px 10px;
+  color: #022b3a;
+  justify-content: space-evenly;
 }
 
 .back-arrow {
@@ -164,27 +155,33 @@ a {
 }
 
 h1 {
-  margin: auto;
   align-self: center;
-  font-size: 2.5rem;
+  font-size: 400%;
+  text-align: center;
+  margin-right: 20px;
+  width: 50vw;
 }
 
-/*  */
+/* add comment component */
 
 .submit-comment-btn {
-  background-color: #1a76d2;
+  background-color: #bf98a0;
   margin: 0px 6px 0px 10px;
-  color: white;
+  color: #022b3a;
+  border-radius: 10px;
 }
 
 .form-label {
   display: flex;
-  justify-content: left;
   justify-content: space-evenly;
   width: 100vw;
   margin: 20px 0px 20px 0px;
 }
 
 #add-comment {
-  width: 80vw;
+  width: 90vw;
+  padding: 5px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #022b3a;
 }

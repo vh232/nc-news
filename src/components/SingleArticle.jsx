@@ -50,12 +50,14 @@ const SingleArticle = () => {
     return (
       <div className="single-article">
         <br></br>
-        <section className="article-title">
+        
         <Link to="/articles" className="back-arrow"><ArrowBackIcon fontSize="large"/></Link>
+        <section className="article-title">
         <h1>{article.title}</h1>
-        </section>
+        
         
         <img className="single-article-img" src={article.article_img_url}/>
+        </section>
         <p className="body">{article.body}</p>
         <p className="topic">
           topic: {article.topic} written by: {article.author}

@@ -7,10 +7,30 @@ import LandingPage from "./pages/LandingPage";
 import { UserProvider } from "./contexts/UserContext";
 import FilterByTopicPage from "./pages/FilterByTopicPage";
 import SortedArticlesList from "./components/SortedArticlesList";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
+const myTheme = createTheme({
+  palette: {
+    mode: 'light',
+    primary: {
+      main: '#022b3a',
+    },
+    secondary: {
+      main: '#bf98a0',
+    },
+    background: {
+      default: '#e1e5f2',
+      paper: '#022b3a',
+    },
+  },
+  typography: {
+    fontFamily: 'Outfit',
+  },
+});
 
 function App() {
   return (
+    <ThemeProvider theme={myTheme}>
     <UserProvider>
     <BrowserRouter>
       <div className="app">
@@ -24,6 +44,7 @@ function App() {
       </div>
     </BrowserRouter>
     </UserProvider>
+    </ThemeProvider>
   );
 }
 
