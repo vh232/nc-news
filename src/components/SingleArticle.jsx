@@ -79,7 +79,7 @@ const SingleArticle = () => {
         </div>
         <img className="single-article-img" src={article.article_img_url}/>
         </section>
-        <p className="body">{article.body}</p>
+        <p className="article-body">{article.body}</p>
         
         <p className="votes"> <ThumbUpAltIcon fontSize="small" tabIndex='0' onClick={() => {upVote(article.article_id)}}/>  
         <ThumbDownAltIcon fontSize="small" tabIndex='0' onClick={() => {downVote(article.article_id)}}/>  votes: {article.votes} comments: {article.comment_count}</p>
