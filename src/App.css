@@ -26,6 +26,14 @@ a {
   text-align: center;
 }
 
+.coming-soon {
+  color:#022b3a;
+  text-align: center;
+  margin: auto;
+  font-size: 8vw;
+  margin-top: 10vh;
+}
+
 /* Landing-Page */
 
 .landing-page-grid {
