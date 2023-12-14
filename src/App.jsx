@@ -7,7 +7,7 @@ import LandingPage from "./pages/LandingPage";
 import { UserProvider } from "./contexts/UserContext";
 import FilterByTopicPage from "./pages/FilterByTopicPage";
 import SortedArticlesList from "./components/SortedArticlesList";
-
+import RouteNotFound from "./error-handling/RouteNotFound";
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
           <Route path="/articles" element={<ViewAllArticles />} />
           <Route path="/articles/:article_id" element={<ViewSingleArticle />} />
           <Route path="/topics" element={<FilterByTopicPage />} />
+          <Route path="*" element={<RouteNotFound />}/>
         </Routes>
       </div>
     </BrowserRouter>
