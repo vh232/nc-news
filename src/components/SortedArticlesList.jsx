@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
 import ArticlesCards from "./ArticlesCards";
 import {
-  filterByTopic,
-  getAllArticles,
-  getOrderedFilteredSort,
-  getOrderedSort,
-  sortArticlesBy,
+  getAllArticles
 } from "../../api";
 import { useSearchParams } from "react-router-dom";
+import ErrorPage from '../error-handling/ErrorPage'
 
 const SortedArticlesList = () => {
   const [articlesList, setArticlesList] = useState([]);
@@ -17,10 +14,16 @@ const SortedArticlesList = () => {
   const selectedSortBy = searchParams.get("sort_by");
   const selectedFilterBy = searchParams.get("topic");
   const orderBy = searchParams.get("order");
+  const [apiError, setApiError] = useState();
 
  
   useEffect(() => {
     getAllArticles(selectedFilterBy, selectedSortBy, orderBy).then((articles) => {
+      if (articles.response) {
+        setApiError(articles.response)
+        setArticlesList([])
+        setIsLoading(false);
+      }
       setArticlesList(articles);
       setIsLoading(false)
     })
@@ -29,7 +32,9 @@ const SortedArticlesList = () => {
 
   if (isLoading) {
     return <h1 className="loading-indicator">Loading...</h1>;
-  } else {
+  } else if (apiError) {
+    return <ErrorPage message={apiError.data.msg}/>
+  } {
     return (
       <div className="articles-list">
         <ArticlesCards articlesList={articlesList} />

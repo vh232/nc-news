@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ErrorPage from "../error-handling/ErrorPage";
 
 const SingleArticle = () => {
 
@@ -12,6 +13,7 @@ const SingleArticle = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [upvoteClicked, setUpvoteClicked] = useState(false)
   const [downvoteClicked, setDownvoteClicked] = useState(false)
+  const [apiError, setApiError] = useState(null)
 
   const upVote = (article_id) => {
     if (!upvoteClicked && downvoteClicked) {
@@ -38,13 +40,20 @@ const SingleArticle = () => {
 
   useEffect(() => {
     getArticleById(article_id).then((singleArticle) => {
+      if (singleArticle.response) {
+        setApiError(article.response)
+        setIsLoading(false);
+        setArticle({})
+      }
       setArticle(singleArticle)
       setIsLoading(false);
     })
-  }, [article]);
+  }, [article, apiError]);
 
   if (isLoading) {
     return <h1 className="loading-indicator">Loading...</h1>;
+  } else if (apiError) {
+    return <ErrorPage message={apiError.data.msg} />
   } else {
     const datePosted = new Date(article.created_at);
     return (

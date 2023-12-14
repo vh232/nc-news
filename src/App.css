@@ -27,6 +27,10 @@ a {
 
 /* Header */
 
+.css-hip9hq-MuiPaper-root-MuiAppBar-root {
+  background-color: #022b3a;
+}
+
 .header-container {
   background-color: #022b3a;
   color: #e1e5f2;

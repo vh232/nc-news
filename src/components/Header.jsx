@@ -37,7 +37,7 @@ const Header = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" className="header-container">
       <Container maxWidth="xl" className="header-container">
         <Toolbar disableGutters>
           <Typography

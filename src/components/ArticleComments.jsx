@@ -8,22 +8,26 @@ import AddNewComment from "./AddAComment";
 import DeleteComment from "./DeleteComment";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
+import ErrorPage from "../error-handling/ErrorPage";
 
 const ArticleComments = () => {
   const [comments, setComments] = useState();
   const { article_id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const { username } = useContext(UserContext)
+  const [apiError, setApiError] = useState(null)
 
   useEffect(() => {
     getArticleComments(article_id)
       .then((articleComments) => {
+        if (articleComments.response) {
+          setApiError(articleComments.response);
+          setComments([]);
+          setIsLoading(false);
+        }
         setComments(articleComments);
         setIsLoading(false);
       })
-      .catch((err) => {
-        console.log(err);
-      });
   }, []);
 
   const Root = styled("div")(({ theme }) => ({
@@ -36,6 +40,8 @@ const ArticleComments = () => {
 
   if (isLoading) {
     return <h1 className="loading-indicator">Loading...</h1>;
+  } else if (apiError) {
+    return <ErrorPage message={apiError.data.msg}/>
   } else {
     return (
       <>

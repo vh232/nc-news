@@ -3,7 +3,6 @@ import { CommentOutlined } from "@ant-design/icons";
 import { FloatButton } from "antd";
 import { postComment } from "../../api";
 import { useParams } from "react-router-dom";
-import ErrorPage from "../error-handling/ErrorPage";
 
 
 const AddNewComment = (props) => {
@@ -21,10 +20,9 @@ const AddNewComment = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-   
     setNewComment({ ...newComment }, (newComment.body = commentBody));
-    if (newComment.body === '') {
-      
+    if (commentBody.length === 0) {
+      setUserError('Comment not long enough')
     } else {
     postComment(article_id, newComment).then((newCommentFromAPI) => {
         setCommentBody("");
@@ -42,7 +40,7 @@ const AddNewComment = (props) => {
         <label htmlFor="add-comment" className="form-label">
           <textarea
             id="add-comment"
-            placeholder="Enter your comment here..."
+            placeholder={!commentBody ? "Start typing to submit your comment..." : null}
             name="add-comment"
             value={commentBody}
             cols="44"
@@ -51,9 +49,11 @@ const AddNewComment = (props) => {
               setCommentBody(event.target.value);
             }}
           ></textarea>
-          <button className="submit-comment-btn">Submit Comment</button>
+          {!commentBody ? null : <button className="submit-comment-btn">Submit!</button>}
+          
         </label>
       </form>
+      
 
       <FloatButton
         icon={<CommentOutlined />}
