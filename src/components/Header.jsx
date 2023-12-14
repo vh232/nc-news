@@ -38,7 +38,7 @@ const Header = () => {
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" className="header-container">
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -47,7 +47,6 @@ const Header = () => {
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
@@ -88,7 +87,7 @@ const Header = () => {
             >
               {pages.map((page, index) => (
                 <MenuItem key={index} onClick={handleCloseNavMenu}>
-                  <Typography className="drop-down-link" textAlign="center">{page}</Typography>
+                  <Typography className="drop-down-link" textAlign="center" color="#022b3a">{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -101,7 +100,6 @@ const Header = () => {
               mr: 2,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
-              fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
@@ -115,13 +113,13 @@ const Header = () => {
               <Button
                 key={index}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, display: 'block' }}
               >
                 <span className="header-small-link">{page}</span>
               </Button>
             ))}
           </Box>
-         <Link to="/" className="header-small-link"> <HomeIcon /> </Link>
+         <Link to="/" className="header-home-link"> <HomeIcon /> </Link>
         </Toolbar>
       </Container>
     </AppBar>
