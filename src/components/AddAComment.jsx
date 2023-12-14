@@ -49,9 +49,8 @@ const AddNewComment = (props) => {
               setCommentBody(event.target.value);
             }}
           ></textarea>
-          {!commentBody ? null : <button className="submit-comment-btn">Submit!</button>}
-          
         </label>
+        {!commentBody ? <button className="disabled-submit-comment-btn" type="button" disabled>Submit!</button> : <button className="submit-comment-btn">Submit!</button>}
       </form>
       
 
