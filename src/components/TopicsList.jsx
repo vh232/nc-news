@@ -21,7 +21,7 @@ const TopicsList = () => {
     <div>
          {
          topics.map((topic) => {
-        return <TopicCard topic={topic}/>
+        return <TopicCard topic={topic} key={topic.slug}/>
     })}
     </div>
   );

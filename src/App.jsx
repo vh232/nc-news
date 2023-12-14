@@ -8,7 +8,7 @@ import { UserProvider } from "./contexts/UserContext";
 import FilterByTopicPage from "./pages/FilterByTopicPage";
 import SortedArticlesList from "./components/SortedArticlesList";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
+import RouteNotFound from "./error-handling/RouteNotFound";
 const myTheme = createTheme({
   palette: {
     mode: 'light',
@@ -28,6 +28,7 @@ const myTheme = createTheme({
   },
 });
 
+
 function App() {
   return (
     <ThemeProvider theme={myTheme}>
@@ -40,6 +41,7 @@ function App() {
           <Route path="/articles" element={<ViewAllArticles />} />
           <Route path="/articles/:article_id" element={<ViewSingleArticle />} />
           <Route path="/topics" element={<FilterByTopicPage />} />
+          <Route path="*" element={<RouteNotFound />}/>
         </Routes>
       </div>
     </BrowserRouter>

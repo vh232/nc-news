@@ -6,7 +6,7 @@ const TopicCard = (props) => {
     const { topic } = props
 
     return (
-        <>
+
                 <Space direction="vertical" size={16}>
                 <Card
                   size="small"
@@ -19,7 +19,6 @@ const TopicCard = (props) => {
                   <p>{topic.description}</p>
                 </Card>
               </Space>
-        </>
     )
 
 }
