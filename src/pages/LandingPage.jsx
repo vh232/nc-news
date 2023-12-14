@@ -3,10 +3,17 @@ import {Link} from 'react-router-dom';
 const LandingPage = () => {
 
     return (
-        <div>
-            <h1>coming soon!</h1>
-            <Link to="/articles"><button className="landing-page">View All Articles</button></Link>
-            <Link to="/topics"><button className="landing-page">View All Topics</button></Link>
+        <div className="landing-page-grid">
+            <section className="right-hand-column">
+            <h1 id="NC-News-landing">NC <br></br> News</h1>
+            <p id="landing-text">A Reddit-style social news aggregator app created by Vicky Hill. </p>
+            </section>
+            <section className="left-hand-column">
+            <button className="landing-page-button" onClick={() => {location.href="/articles"}}>View All Articles</button>
+            <button onClick={() => {location.href="/topics"}}className="landing-page-button">View All Topics</button>
+            <button className="landing-page-button">Post a New Article</button>
+            <button className="landing-page-button">View Your Profile</button>
+            </section>  
         </div>
         
     )

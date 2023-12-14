@@ -119,7 +119,7 @@ const Header = () => {
               </Button>
             ))}
           </Box>
-         <Link to="/" className="header-home-link"> <HomeIcon /> </Link>
+         <Link to="/" className="header-home-link"> <HomeIcon fontSize='large'/> </Link>
         </Toolbar>
       </Container>
     </AppBar>
