@@ -56,7 +56,6 @@ a {
   color: #e1e5f2;
 }
 
-
 /* view all articles */
 .dropdown-menus {
   display: flex;
@@ -132,6 +131,19 @@ a {
   border-radius: 20px;
 }
 
+.article-info {
+  background-color: #bf98a0;
+  padding: 3px 10px 3px 10px;
+  border-radius: 20px;
+  color:#e1e5f2;
+  margin: 0px 5px;
+  text-align: center;
+}
+
+.article-info-bubbles {
+  text-align: center;
+}
+
 .comment-info {
   text-align: center;
 }
@@ -140,18 +152,19 @@ a {
   color: green;
 }
 
+.back-arrow {
+  margin-bottom: -200px;
+}
+
 .article-title {
   display: flex;
   flex-direction: row;
   font-family: "Outfit", sans-serif;
-  margin: 10px 10px 20px 10px;
+  margin: -50px 10px 20px 10px;
   color: #022b3a;
   justify-content: space-evenly;
-}
-
-.back-arrow {
-  color: #4a051c;
-  align-self: center;
+  align-items: center;
+  padding-top: -
 }
 
 h1 {

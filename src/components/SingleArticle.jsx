@@ -53,26 +53,25 @@ const SingleArticle = () => {
         
         <Link to="/articles" className="back-arrow"><ArrowBackIcon fontSize="large"/></Link>
         <section className="article-title">
+          <div className="title-info-container">
         <h1>{article.title}</h1>
-        
-        
-        <img className="single-article-img" src={article.article_img_url}/>
-        </section>
-        <p className="body">{article.body}</p>
-        <p className="topic">
-          topic: {article.topic} written by: {article.author}
-        </p>
-        <p className="author"></p>
-        
-       
-        <p className="created-at">{`Posted: ${datePosted.toLocaleString([], {
+        <section className="article-info-bubbles">
+          <span className="article-info">Topic: {article.topic}</span> <span className="article-info">
+          Written by: {article.author}</span> <p><span className="article-info">{`Posted: ${datePosted.toLocaleString([], {
           day: "numeric",
           month: "numeric",
           year: "numeric",
           hour12: false,
           hour: "2-digit",
           minute: "2-digit",
-        })}`}</p>
+        })}`}</span></p>
+        </section>
+
+        </div>
+        <img className="single-article-img" src={article.article_img_url}/>
+        </section>
+        <p className="body">{article.body}</p>
+        
         <p className="votes"> <ThumbUpAltIcon fontSize="small" tabIndex='0' onClick={() => {upVote(article.article_id)}}/>  
         <ThumbDownAltIcon fontSize="small" tabIndex='0' onClick={() => {downVote(article.article_id)}}/>  votes: {article.votes} comments: {article.comment_count}</p>
         
