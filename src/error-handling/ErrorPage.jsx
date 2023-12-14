@@ -1,7 +1,11 @@
 import React from "react";
 import { Button, Result } from "antd";
+import RouteNotFound from "./RouteNotFound"
 
 const ErrorPage = ( {message} ) => {
+  if (message === 'not found') {
+    return <RouteNotFound />
+  }
   return (
     <Result
       status="warning"
