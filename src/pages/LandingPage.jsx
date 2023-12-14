@@ -11,8 +11,8 @@ const LandingPage = () => {
             <section className="left-hand-column">
             <button className="landing-page-button" onClick={() => {location.href="/articles"}}>View All Articles</button>
             <button onClick={() => {location.href="/topics"}}className="landing-page-button">View All Topics</button>
-            <button className="landing-page-button">Post a New Article</button>
-            <button className="landing-page-button">View Your Profile</button>
+            <button className="landing-page-button" onClick={() => {location.href="/articles/post_new_article"}}>Post a New Article</button>
+            <button className="landing-page-button" onClick={() => {location.href="/user_profile"}}>View Your Profile</button>
             </section>  
         </div>
         

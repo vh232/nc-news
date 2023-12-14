@@ -9,6 +9,7 @@ import FilterByTopicPage from "./pages/FilterByTopicPage";
 import SortedArticlesList from "./components/SortedArticlesList";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import RouteNotFound from "./error-handling/RouteNotFound";
+import ComingSoon from "./pages/ComingSoon";
 const myTheme = createTheme({
   palette: {
     mode: 'light',
@@ -41,6 +42,8 @@ function App() {
           <Route path="/articles" element={<ViewAllArticles />} />
           <Route path="/articles/:article_id" element={<ViewSingleArticle />} />
           <Route path="/topics" element={<FilterByTopicPage />} />
+          <Route path="/user_profile" element={<ComingSoon />} />
+          <Route path="/articles/post_new_article" element={<ComingSoon />} />
           <Route path="*" element={<RouteNotFound />}/>
         </Routes>
       </div>
