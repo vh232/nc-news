@@ -23,7 +23,7 @@ const SingleArticle = () => {
       setUpvoteClicked(true)
       setDownvoteClicked(false)
       patchArticle(article_id, {inc_votes: +1})
-    }
+    } 
       }
       
   
@@ -79,13 +79,22 @@ const SingleArticle = () => {
         </div>
         <img className="single-article-img" src={article.article_img_url}/>
         </section>
-        <p className="article-body">{article.body}</p>
+        <section className="article-body">
+          <div className="vote-grid">
+        {!upvoteClicked ? <ThumbUpAltIcon  className="votes" fontSize="large" tabIndex='0' onClick={() => {upVote(article.article_id)}}/> : <ThumbUpAltIcon className="votes-clicked" fontSize="large" tabIndex='0' onClick={() => {upVote(article.article_id)}}/>}<br></br>
+        <span className="vote-value">{article.votes}</span><br></br>
+        {!downvoteClicked ?  <ThumbDownAltIcon className="votes" fontSize="large" tabIndex='0' onClick={() => {downVote(article.article_id)}}/> : <ThumbDownAltIcon className="votes-clicked" fontSize="large" tabIndex='0' onClick={() => {downVote(article.article_id)}}/>}  <br></br>
+        <p>  comments:<br></br><span className="vote-value">{article.comment_count}</span></p>
+        </div>
+        <p className="article-body-text">{article.body}</p>
+        </section>
+         
+         
+       
         
-        <p className="votes"> <ThumbUpAltIcon fontSize="small" tabIndex='0' onClick={() => {upVote(article.article_id)}}/>  
-        <ThumbDownAltIcon fontSize="small" tabIndex='0' onClick={() => {downVote(article.article_id)}}/>  votes: {article.votes} comments: {article.comment_count}</p>
-        
-        
+        <hr></hr>
       </div>
+
     );
     }
   }

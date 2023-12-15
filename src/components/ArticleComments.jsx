@@ -45,17 +45,19 @@ const ArticleComments = () => {
   } else {
     return (
       <>
-      <AddNewComment setComments={setComments} comments={comments}/>
-      <div className="article-comment-list">
+      <AddNewComment setComments={setComments} comments={comments} className="comments-section"/>
+      <div>
         <Root>
           {comments.map((comment) => {
+            
             const datePosted = new Date(comment.created_at);
             return (
-              <div key={comment.comment_id}>
+              <div key={comment.comment_id} className="article-comment-list">
                 <Divider textAlign="left">{comment.author}</Divider>
                 {comment.body}
                 <div className="comment-info">
-                  votes: {comment.votes} posted:{" "}
+                  <span id='comment-votes'>
+                  votes: {comment.votes}</span> <span id='comment-posted'>posted:{" "}
                   {datePosted.toLocaleString([], {
                     day: "numeric",
                     month: "numeric",
@@ -63,9 +65,10 @@ const ArticleComments = () => {
                     hour12: false,
                     hour: "2-digit",
                     minute: "2-digit",
-                  })}{" "}
-                  {username === comment.author ? <DeleteComment comment_id={comment.comment_id} comments={comments} setComments={setComments}/> : ''}
+                  })}{" "}</span>
+                  
                 </div>
+                {username === comment.author ? <span id="comment-delete"><DeleteComment comment_id={comment.comment_id} comments={comments} setComments={setComments}/></span> : null}
               </div>
             );
           })}

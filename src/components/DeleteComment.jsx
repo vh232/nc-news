@@ -25,7 +25,7 @@ const DeleteComment = (props) => {
     }
 
     return (
-        <button onClick={handleDelete}>
+        <button onClick={handleDelete} id="comment-delete-button">
         delete comment
         </button>
         

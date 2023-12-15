@@ -224,12 +224,12 @@ a {
   text-align: center;
 }
 
-.comment-info {
-  text-align: center;
+.votes :hover {
+  color:#bf98a0;
 }
 
-.votes :hover {
-  color: green;
+.votes-clicked {
+  color:#bf98a0;
 }
 
 .back-arrow {
@@ -256,13 +256,34 @@ h1 {
 }
 
 .article-body {
-  margin: auto;
-  width: 90vw;
-  font-size: 1.5vw;
-  line-height: 2rem;
-  text-align: justify;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: top;
   margin-top: 40px;
 }
+
+.article-body-text {
+  font-size: max(1.3vw, 16px);
+  margin-right: auto;
+  width: 87vw;
+  line-height: 2rem;
+  text-align: justify;
+}
+
+.vote-grid {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 20px;
+  margin-bottom: 0px;
+}
+
+.vote-value {
+  font-size: max(2vw, 20px);
+  color:#bf98a0;
+}
+
 
 /* add comment component */
 
@@ -305,4 +326,73 @@ h1 {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+}
+
+/* comments  */
+
+.article-comment-list {
+  font-size: max(1.3vw, 16px);
+  margin: auto;
+  width: 95vw;
+  line-height: 2rem;
+  text-align: justify;
+justify-content: center;
+display: flex;
+flex-direction: column;
+}
+
+.comment-info {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  width: 40vw;
+  margin: auto;
+  margin-top: 2vw;
+}
+
+#comment-votes {
+  background-color: #bf98a0;
+  padding: 3px 10px 3px 10px;
+  border-radius: 20px;
+  color:#e1e5f2;
+  margin: 0px 5px;
+  text-align: center;
+  font-size: max(1.3vw, 16px);
+  text-wrap: nowrap;
+}
+
+#comment-posted {
+  background-color: #bf98a0;
+  padding: 0px 10px;
+  border-radius: 20px;
+  color:#e1e5f2;
+  margin: 0px 5px;
+  margin-top: 4px;
+  text-align: center;
+  align-items: center;
+  font-size: max(1.3vw, 16px);
+  text-wrap: nowrap;
+}
+
+#comment-delete {
+  background-color:#022b3a;
+  padding: 0px 10px;
+  border-radius: 20px;
+  color:#e1e5f2;
+  margin: 0px 5px;
+  text-align: center;
+  align-items: center;
+  border-style: none;
+  font-size: max(1.3vw, 16px);
+  text-wrap: nowrap;
+  margin-top: 2vw;
+}
+
+#comment-delete-button {
+  background-color:#022b3a;
+  color:#e1e5f2;
+  text-align: center;
+  border-style: none;
+  font-size: max(1.3vw, 16px);
+  text-wrap: nowrap;
 }
