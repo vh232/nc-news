@@ -17,21 +17,40 @@ const SingleArticle = () => {
 
   const upVote = (article_id) => {
     if (!upvoteClicked && downvoteClicked) {
+      setArticle((currArticle) => {
+        currArticle.votes += 1
+        return currArticle
+      })
       setDownvoteClicked(false)
       patchArticle(article_id, {inc_votes: +1})
+      
     } else if (!upvoteClicked && !downvoteClicked) {
+      setArticle((currArticle) => {
+        currArticle.votes += 1
+        return currArticle
+      })
       setUpvoteClicked(true)
       setDownvoteClicked(false)
       patchArticle(article_id, {inc_votes: +1})
+      
     } 
       }
       
   
   const downVote = (article_id) => {
     if (!downvoteClicked && upvoteClicked) {
+    setArticle((currArticle) => {
+        currArticle.votes -= 1
+        return currArticle
+      })
     patchArticle(article_id, {inc_votes: -1})
     setUpvoteClicked(false)
+    
     } else if (!downvoteClicked && !upvoteClicked) {
+      setArticle((currArticle) => {
+        currArticle.votes -= 1
+        return currArticle
+      })
       patchArticle(article_id, {inc_votes: -1})
     setUpvoteClicked(false)
     setDownvoteClicked(true)
@@ -48,7 +67,7 @@ const SingleArticle = () => {
       setArticle(singleArticle)
       setIsLoading(false);
     })
-  }, [article, apiError]);
+  }, [apiError]);
 
   if (isLoading) {
     return <h1 className="loading-indicator">Loading...</h1>;

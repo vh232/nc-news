@@ -22,7 +22,20 @@ const ArticleComments = () => {
   const [upvoteClicked, setUpvoteClicked] = useState(false)
   const [downvoteClicked, setDownvoteClicked] = useState(false)
 
-  const upVote = (comment_id) => {
+  useEffect(() => {
+    getArticleComments(article_id).then((articleComments) => {
+      if (articleComments.response) {
+        setApiError(articleComments.response);
+        setComments();
+        setIsLoading(false);
+      }
+      setComments(articleComments);
+      setIsLoading(false);
+    });
+  }, [isLoading]);
+
+  const upVote = (comment_id, event) => {
+    event.preventDefault();
     if (!upvoteClicked && downvoteClicked) {
       setDownvoteClicked(false)
       patchComment(comment_id, {inc_votes: +1})
@@ -54,7 +67,8 @@ const ArticleComments = () => {
       }
       
   
-  const downVote = (comment_id) => {
+  const downVote = (comment_id, event) => {
+    event.preventDefault()
     if (!downvoteClicked && upvoteClicked) {
     patchComment(comment_id, {inc_votes: -1})
     setUpvoteClicked(false)
@@ -86,17 +100,7 @@ const ArticleComments = () => {
   }
 
 
-  useEffect(() => {
-    getArticleComments(article_id).then((articleComments) => {
-      if (articleComments.response) {
-        setApiError(articleComments.response);
-        setComments([]);
-        setIsLoading(false);
-      }
-      setComments(articleComments);
-      setIsLoading(false);
-    });
-  }, [comments]);
+  
 
   const Root = styled("div")(({ theme }) => ({
     width: "100%",
