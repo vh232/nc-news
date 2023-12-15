@@ -19,10 +19,12 @@ const TopicsList = () => {
   } else {
   return (
     <div>
-         {
-         topics.map((topic) => {
-        return <TopicCard topic={topic} key={topic.slug}/>
-    })}
+         
+          <div className="topic-card">
+        { topics.map((topic) => {
+        return  <TopicCard topic={topic} key={topic.slug}/>
+        } ) }
+    </div>
     </div>
   );
 }

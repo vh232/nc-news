@@ -31,7 +31,7 @@ const ArticlesList = () => {
   } {
     return (
       <div className="articles-list">
-        <h2>You are viewing articles in: {topicFilter}</h2>
+        <h2 className="options-title-smaller">You are viewing articles in: {topicFilter}</h2>
         <ArticlesCards articlesList={articlesList} />
       </div>
     );

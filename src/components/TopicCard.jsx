@@ -7,7 +7,7 @@ const TopicCard = (props) => {
 
     return (
 
-                <Space direction="vertical" size={16}>
+                <Space direction="vertical" size={16} className="indv-topic-card">
                 <Card
                   size="small"
                   title={topic.slug}
