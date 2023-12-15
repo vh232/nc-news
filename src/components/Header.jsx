@@ -14,7 +14,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import { useContext } from 'react';
 import { UserContext } from '../contexts/UserContext';
 
-const pages = [<Link to="/articles" className='header-small-link'>View All Articles</Link>, <Link to="/topics" className='header-small-link'>View Articles by Topic</Link>, <Link to="/" className='header-small-link'>Post New Article</Link>];
+const pages = [<Link to="/articles" className='header-small-link'>View All Articles</Link>, <Link to="/topics" className='header-small-link'>View Articles by Topic</Link>, <Link to="/articles/post_new_article" className='header-small-link'>Post New Article</Link>];
 
 const Header = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
