@@ -353,6 +353,7 @@ margin-top: 2px;
   width: 40vw;
   margin: auto;
   margin-top: 1vw;
+  font-size: 1rem;
 }
 
 #comment-votes {
@@ -363,7 +364,6 @@ margin-top: 2px;
   margin: 0px 5px;
   margin-top: 4px;
   text-align: center;
-  font-size: max(1.3vw, 16px);
   text-wrap: nowrap;
 }
 
@@ -376,7 +376,6 @@ margin-top: 2px;
   margin-top: 4px;
   text-align: center;
   align-items: center;
-  font-size: max(1.3vw, 16px);
   text-wrap: nowrap;
 }
 
@@ -390,7 +389,6 @@ margin-top: 2px;
   text-align: center;
   align-items: center;
   border-style: none;
-  font-size: max(1.3vw, 16px);
   text-wrap: nowrap;
   max-width: 20vw;
   margin-bottom: 12px;
