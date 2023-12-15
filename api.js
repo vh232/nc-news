@@ -51,6 +51,15 @@ export const patchArticle = (id, vote) => {
   });
 };
 
+export const patchComment = (id, vote) => {
+  return api.patch(`/comments/${id}`, vote).then((res) => {
+    console.log(res)
+    return res.data;
+  })  .catch((err) => {
+    return err
+  });
+};
+
 export const filterByTopic = (topic) => {
   return api
     .get(`/articles/?topic=${topic}`)

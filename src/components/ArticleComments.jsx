@@ -11,6 +11,7 @@ import { UserContext } from "../contexts/UserContext";
 import ErrorPage from "../error-handling/ErrorPage";
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
+import { patchComment } from "../../api";
 
 const ArticleComments = () => {
   const [comments, setComments] = useState();
@@ -21,26 +22,66 @@ const ArticleComments = () => {
   const [upvoteClicked, setUpvoteClicked] = useState(false)
   const [downvoteClicked, setDownvoteClicked] = useState(false)
 
-  const upVote = (article_id) => {
+  const upVote = (comment_id) => {
     if (!upvoteClicked && downvoteClicked) {
       setDownvoteClicked(false)
-      patchArticle(article_id, {inc_votes: +1})
+      patchComment(comment_id, {inc_votes: +1})
+      setComments((currComments) => {
+        return currComments.map((comment) => {
+          if (comment.comment_id === comment_id) {
+            console.log('matched')
+            comment.comment_id += 1 
+            return comment
+          } else {
+            return comment;
+          }})
+        })
     } else if (!upvoteClicked && !downvoteClicked) {
       setUpvoteClicked(true)
       setDownvoteClicked(false)
-      patchArticle(article_id, {inc_votes: +1})
+      patchComment(comment_id, {inc_votes: +1})
+      setComments((currComments) => {
+        return currComments.map((comment) => {
+          if (comment.comment_id === comment_id) {
+            console.log('matched')
+            comment.comment_id += 1 
+            return comment
+          } else {
+            return comment;
+          }})
+        })
     } 
       }
       
   
-  const downVote = (article_id) => {
+  const downVote = (comment_id) => {
     if (!downvoteClicked && upvoteClicked) {
-    patchArticle(article_id, {inc_votes: -1})
+    patchComment(comment_id, {inc_votes: -1})
     setUpvoteClicked(false)
+    setComments((currComments) => {
+      return currComments.map((comment) => {
+        if (comment.comment_id === comment_id) {
+          console.log('matched')
+          comment.comment_id -= 1 
+          return comment
+        } else {
+          return comment;
+        }})
+      })
     } else if (!downvoteClicked && !upvoteClicked) {
-      patchArticle(article_id, {inc_votes: -1})
+      patchComment(comment_id, {inc_votes: -1})
     setUpvoteClicked(false)
     setDownvoteClicked(true)
+    setComments((currComments) => {
+      return currComments.map((comment) => {
+        if (comment.comment_id === comment_id) {
+          console.log('matched')
+          comment.comment_id -= 1 
+          return comment
+        } else {
+          return comment;
+        }})
+      })
     }
   }
 
@@ -55,7 +96,7 @@ const ArticleComments = () => {
       setComments(articleComments);
       setIsLoading(false);
     });
-  }, []);
+  }, [comments]);
 
   const Root = styled("div")(({ theme }) => ({
     width: "100%",
@@ -82,7 +123,7 @@ const ArticleComments = () => {
             {comments.map((comment) => {
               const datePosted = new Date(comment.created_at);
               return (
-                <div>
+                <div key={comment.comment_id}>
                   <Divider textAlign="left">
                     <span id="comment-author">{comment.author}</span>{" "}
                     <span>
@@ -109,16 +150,16 @@ const ArticleComments = () => {
                               fontSize="medium"
                               tabIndex="0"
                               onClick={() => {
-                                upVote(article.article_id);
+                                upVote(comment.comment_id);
                               }}
                             />
                           ) : (
                             <ThumbUpAltIcon
-                              className="votes-clicked-comments"
+                              className="votes-comments"
                               fontSize="medium"
                               tabIndex="0"
                               onClick={() => {
-                                upVote(article.article_id);
+                                upVote(comment.comment_id);
                               }}
                             />
                           )}
@@ -131,16 +172,16 @@ const ArticleComments = () => {
                               fontSize="medium"
                               tabIndex="0"
                               onClick={() => {
-                                downVote(article.article_id);
+                                downVote(comment.comment_id);
                               }}
                             />
                           ) : (
                             <ThumbDownAltIcon
-                              className="votes-clicked-comments"
+                              className="votes-comments"
                               fontSize="medium"
                               tabIndex="0"
                               onClick={() => {
-                                downVote(article.article_id);
+                                downVote(comment.comment_id);
                               }}
                             />
                           )}{" "}
