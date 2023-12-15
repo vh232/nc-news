@@ -35,7 +35,7 @@ const ArticlesCards = (props) => {
     <Link to={`/articles/${article.article_id}`} >
     <Meta
       title={article.title}
-      description={`Posted: ${datePosted.toLocaleString([], {
+      description={`At: ${datePosted.toLocaleString([], {
         hour12: false,
         hour: '2-digit',
         minute: '2-digit',

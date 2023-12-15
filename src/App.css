@@ -156,6 +156,10 @@ a {
   align-items: stretch;
 }
 
+.ant-card-body {
+  height: 8.1em;
+}
+
 .ant-card-meta-title {
   white-space: pre-line !important;
   text-align: center;
@@ -173,7 +177,11 @@ a {
   padding: 0px;
   margin-top: -5px;
   margin-bottom: -3px;
+  height: 100%;
+  text-wrap:nowrap;
+  text-overflow: ellipsis;
 }
+
 
 .article-card {
   text-align: center;
@@ -199,6 +207,7 @@ a {
   border-color: #022b3a;
   border-width: 2px;
   background-color: #e1e5f2;
+  
 }
 
 /* single articles */
