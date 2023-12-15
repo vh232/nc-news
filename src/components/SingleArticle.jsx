@@ -60,7 +60,7 @@ const SingleArticle = () => {
       <div className="single-article">
         <br></br>
         
-        <Link to="/articles" className="back-arrow"><ArrowBackIcon fontSize="large"/></Link>
+        <Link to="/articles" className="back-arrow" aria-label="back"><ArrowBackIcon fontSize="large"/></Link>
         <section className="article-title">
           <div className="title-info-container">
         <h1>{article.title}</h1>

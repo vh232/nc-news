@@ -37,7 +37,7 @@ const AddNewComment = (props) => {
     <>
       <h3 id="add-comment-header">Add comment</h3>
       <form id="comment-input-form" onSubmit={submitHandler}>
-        <label htmlFor="add-comment" className="form-label">
+        <label htmlFor="add-comment" className="form-label" aria-label="input-comment-text-box">
           <textarea
             id="add-comment"
             placeholder={!commentBody ? "Start typing to submit your comment..." : null}

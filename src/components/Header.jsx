@@ -114,7 +114,7 @@ const Header = () => {
             ))}
           </Box>
           Logged in as: {username}
-         <Link to="/" className="header-home-link"> <HomeIcon fontSize='large'/> </Link>
+         <Link to="/" className="header-home-link" aria-label='link-to-home'> <HomeIcon fontSize='large'/> </Link>
         </Toolbar>
       </Container>
     </AppBar>
