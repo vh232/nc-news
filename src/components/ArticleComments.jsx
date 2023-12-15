@@ -53,7 +53,7 @@ const ArticleComments = () => {
             const datePosted = new Date(comment.created_at);
             return (
               <div key={comment.comment_id} className="article-comment-list">
-                <Divider textAlign="left">{comment.author}</Divider>
+                <Divider textAlign="left" id="comment-author">{comment.author}</Divider>
                 {comment.body}
                 <div className="comment-info">
                   <span id='comment-votes'>
@@ -66,9 +66,9 @@ const ArticleComments = () => {
                     hour: "2-digit",
                     minute: "2-digit",
                   })}{" "}</span>
-                  
+                   {username === comment.author ? <span id="comment-delete"><DeleteComment comment_id={comment.comment_id} comments={comments} setComments={setComments}/></span> : null}
                 </div>
-                {username === comment.author ? <span id="comment-delete"><DeleteComment comment_id={comment.comment_id} comments={comments} setComments={setComments}/></span> : null}
+               
               </div>
             );
           })}
