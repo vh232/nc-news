@@ -11,12 +11,16 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import HomeIcon from '@mui/icons-material/Home';
+import { useContext } from 'react';
+import { UserContext } from '../contexts/UserContext';
 
 const pages = [<Link to="/articles" className='header-small-link'>View All Articles</Link>, <Link to="/topics" className='header-small-link'>View Articles by Topic</Link>, <Link to="/" className='header-small-link'>Post New Article</Link>];
 
 const Header = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const { username } = useContext(UserContext);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -109,6 +113,7 @@ const Header = () => {
               </Button>
             ))}
           </Box>
+          Logged in as: {username}
          <Link to="/" className="header-home-link"> <HomeIcon fontSize='large'/> </Link>
         </Toolbar>
       </Container>
