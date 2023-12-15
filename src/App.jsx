@@ -37,6 +37,7 @@ function App() {
     <BrowserRouter>
       <div className="app">
         <Header />
+        <br></br><br></br><br></br>
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/articles" element={<ViewAllArticles />} />

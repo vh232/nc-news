@@ -9,25 +9,52 @@ import DeleteComment from "./DeleteComment";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import ErrorPage from "../error-handling/ErrorPage";
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
 
 const ArticleComments = () => {
   const [comments, setComments] = useState();
   const { article_id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
-  const { username } = useContext(UserContext)
-  const [apiError, setApiError] = useState(null)
+  const { username } = useContext(UserContext);
+  const [apiError, setApiError] = useState(null);
+  const [upvoteClicked, setUpvoteClicked] = useState(false)
+  const [downvoteClicked, setDownvoteClicked] = useState(false)
+
+  const upVote = (article_id) => {
+    if (!upvoteClicked && downvoteClicked) {
+      setDownvoteClicked(false)
+      patchArticle(article_id, {inc_votes: +1})
+    } else if (!upvoteClicked && !downvoteClicked) {
+      setUpvoteClicked(true)
+      setDownvoteClicked(false)
+      patchArticle(article_id, {inc_votes: +1})
+    } 
+      }
+      
+  
+  const downVote = (article_id) => {
+    if (!downvoteClicked && upvoteClicked) {
+    patchArticle(article_id, {inc_votes: -1})
+    setUpvoteClicked(false)
+    } else if (!downvoteClicked && !upvoteClicked) {
+      patchArticle(article_id, {inc_votes: -1})
+    setUpvoteClicked(false)
+    setDownvoteClicked(true)
+    }
+  }
+
 
   useEffect(() => {
-    getArticleComments(article_id)
-      .then((articleComments) => {
-        if (articleComments.response) {
-          setApiError(articleComments.response);
-          setComments([]);
-          setIsLoading(false);
-        }
-        setComments(articleComments);
+    getArticleComments(article_id).then((articleComments) => {
+      if (articleComments.response) {
+        setApiError(articleComments.response);
+        setComments([]);
         setIsLoading(false);
-      })
+      }
+      setComments(articleComments);
+      setIsLoading(false);
+    });
   }, []);
 
   const Root = styled("div")(({ theme }) => ({
@@ -41,41 +68,103 @@ const ArticleComments = () => {
   if (isLoading) {
     return <h1 className="loading-indicator">Loading...</h1>;
   } else if (apiError) {
-    return <ErrorPage message={apiError.data.msg}/>
+    return <ErrorPage message={apiError.data.msg} />;
   } else {
     return (
       <>
-      <AddNewComment setComments={setComments} comments={comments} className="comments-section"/>
-      <div>
-        <Root>
-          {comments.map((comment) => {
-            
-            const datePosted = new Date(comment.created_at);
-            return (
-              <div key={comment.comment_id} className="article-comment-list">
-                <Divider textAlign="left" id="comment-author">{comment.author}</Divider>
-                {comment.body}
-                <div className="comment-info">
-                  <span id='comment-votes'>
-                  votes: {comment.votes}</span> <span id='comment-posted'>posted:{" "}
-                  {datePosted.toLocaleString([], {
-                    day: "numeric",
-                    month: "numeric",
-                    year: "numeric",
-                    hour12: false,
-                    hour: "2-digit",
-                    minute: "2-digit",
-                  })}{" "}</span>
-                   {username === comment.author ? <span id="comment-delete"><DeleteComment comment_id={comment.comment_id} comments={comments} setComments={setComments}/></span> : null}
-                </div>
+        <AddNewComment
+          setComments={setComments}
+          comments={comments}
+          className="comments-section"
+        />
+        <div>
+          <Root>
+            {comments.map((comment) => {
+              const datePosted = new Date(comment.created_at);
+              return (
+                <div>
+                  <Divider textAlign="left">
+                    <span id="comment-author">{comment.author}</span>{" "}
+                    <span>
+                      posted:{" "}
+                      {datePosted.toLocaleString([], {
+                        day: "numeric",
+                        month: "numeric",
+                        year: "numeric",
+                        hour12: false,
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}{" "}
+                    </span>{" "}
+                  </Divider>
+                <div key={comment.comment_id} className="whole-comment-container">
+                  
+                  <div className="article-comment-list">
+                    <div className="comment-info">
+                    
+                        <div className="vote-grid-comments">
+                          {!upvoteClicked ? (
+                            <ThumbUpAltIcon
+                              className="votes-comments"
+                              fontSize="medium"
+                              tabIndex="0"
+                              onClick={() => {
+                                upVote(article.article_id);
+                              }}
+                            />
+                          ) : (
+                            <ThumbUpAltIcon
+                              className="votes-clicked-comments"
+                              fontSize="medium"
+                              tabIndex="0"
+                              onClick={() => {
+                                upVote(article.article_id);
+                              }}
+                            />
+                          )}
+                          
+                          <span className="vote-value-comments">{comment.votes}</span>
+                       
+                          {!downvoteClicked ? (
+                            <ThumbDownAltIcon
+                              className="votes-comments"
+                              fontSize="medium"
+                              tabIndex="0"
+                              onClick={() => {
+                                downVote(article.article_id);
+                              }}
+                            />
+                          ) : (
+                            <ThumbDownAltIcon
+                              className="votes-clicked-comments"
+                              fontSize="medium"
+                              tabIndex="0"
+                              onClick={() => {
+                                downVote(article.article_id);
+                              }}
+                            />
+                          )}{" "}
+                          <br></br>
+                        </div>
                
-              </div>
-            );
-          })}
-          
-        </Root>
-        
-      </div>
+                      {comment.body}
+                    </div>
+                  </div>
+                  {username === comment.author ? (
+                    <span id="comment-delete">
+                      <DeleteComment
+                        comment_id={comment.comment_id}
+                        comments={comments}
+                        setComments={setComments}
+                      />
+                    </span>
+                  ) : null}
+                </div>
+                </div>
+              );
+            })}
+          </Root>
+        </div>
       </>
     );
   }
