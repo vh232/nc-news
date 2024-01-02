@@ -137,6 +137,13 @@ a {
   color: #e1e5f2;
 }
 
+.logged-in {
+  text-align: end;
+  margin-left: -50px;
+  font-size: max(0.5vw, 15px);
+  max-width: 30vw;
+}
+
 /* view all articles */
 .dropdown-menus {
   display: flex;
@@ -145,6 +152,10 @@ a {
 }
 
 .loading-indicator {
+  text-align: center;
+}
+
+.loading-sentence {
   text-align: center;
 }
 
@@ -380,7 +391,7 @@ margin-top: 2px;
   max-width: 25vw;
 }
 
-#comment-delete {
+#comment-delete-button {
   background-color:#022b3a;
   border-radius: 20px;
   color:#e1e5f2;
@@ -389,17 +400,6 @@ margin-top: 2px;
   text-wrap: nowrap;
   width: 7vw;
   text-align: center;
-}
-
-#comment-delete-button {
-  background-color:#022b3a00;
-  color:#e1e5f2;
-  border-style: none;
-  font-size: 16px;
-  text-wrap: nowrap;
-  width: 6vw;
-  text-align: center;
-
 }
 
 .vote-grid-comments {
@@ -486,4 +486,102 @@ margin-top: 2px;
   text-align: left;
   margin: 10px;
   margin-left: 10vw;
+}
+
+@media (max-width: 850px) {
+  .article-title {
+    display: flex;
+    flex-direction: column;
+    font-family: "Outfit", sans-serif;
+    margin: -50px 10px 20px 10px;
+    color: #022b3a;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .article-title-text {
+    text-align: center;
+    margin: auto;
+    font-size: 7vw;
+    padding-bottom: 2vh;
+    text-wrap:wrap;
+    width: 80%;
+  }
+
+  .single-article-img {
+    width: 90%;
+    object-fit: cover;
+    padding: 0px;
+  }
+
+  .article-info {
+    font-size: max(2vw, 12px);
+    text-wrap: nowrap;
+  }
+
+  .article-body {
+    margin-top: 0px;
+  }
+
+  .vote-grid {
+    width: 8vw;
+    margin: 0px 10px;
+  }
+
+  .comments-info {
+    display: none;
+  }
+
+  .article-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .article-body-text {
+    margin: 0px 10px;
+  }
+
+  .css-qywfm8-MuiDivider-wrapper {
+    min-width: fit-content;
+  }
+
+  .form-label {
+   display: flex;
+   justify-content: center;
+   margin-bottom: 10px;
+  }
+
+  .comment-info {
+    max-height:max-content;
+    min-height: auto;
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    align-content: center
+  }
+
+  #comment-input-form {
+    padding-bottom: 2vh;
+  }
+
+  #add-comment {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+  }
+
+  #comment-delete-button {
+    background-color: #022b3a;
+    border-radius: 20px;
+    color: #e1e5f2;
+    border-style: none;
+    font-size: 1rem;
+    text-wrap: nowrap;
+    text-align: center;
+    min-width: fit-content;
+    margin: auto;
+  }
+
 }

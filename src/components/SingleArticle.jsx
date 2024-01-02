@@ -83,7 +83,7 @@ const SingleArticle = () => {
         <Link to="/articles" className="back-arrow" aria-label="back"><ArrowBackIcon fontSize="large"/></Link>
         <section className="article-title">
           <div className="title-info-container">
-        <h1>{article.title}</h1>
+        <h1 className="article-title-text">{article.title}</h1>
         <section className="article-info-bubbles">
           <span className="article-info">Topic: {article.topic}</span> <span className="article-info">
           Written by: {article.author}</span> <p><span className="article-info">{`Posted: ${datePosted.toLocaleString([], {
@@ -104,7 +104,7 @@ const SingleArticle = () => {
         {!upvoteClicked ? <ThumbUpAltIcon  className="votes" fontSize="large" tabIndex='0' onClick={() => {upVote(article.article_id)}}/> : <ThumbUpAltIcon className="votes-clicked" fontSize="large" tabIndex='0' onClick={() => {upVote(article.article_id)}}/>}<br></br>
         <span className="vote-value">{article.votes}</span><br></br>
         {!downvoteClicked ?  <ThumbDownAltIcon className="votes" fontSize="large" tabIndex='0' onClick={() => {downVote(article.article_id)}}/> : <ThumbDownAltIcon className="votes-clicked" fontSize="large" tabIndex='0' onClick={() => {downVote(article.article_id)}}/>}  <br></br>
-        <p>  comments:<br></br><span className="vote-value">{article.comment_count}</span></p>
+        <p className="comments-info">  <span className="comments-label">comments:</span><br></br><span className="vote-value">{article.comment_count}</span></p>
         </div>
         <p className="article-body-text">{article.body}</p>
         </section>

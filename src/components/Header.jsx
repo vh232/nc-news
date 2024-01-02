@@ -39,7 +39,6 @@ const Header = () => {
             noWrap
             component="a"
             sx={{
-              mr: 2,
               display: { xs: 'none', md: 'flex' },
               fontWeight: 700,
               letterSpacing: '.3rem',
@@ -113,7 +112,7 @@ const Header = () => {
               </Button>
             ))}
           </Box>
-          Logged in as: {username}
+          <span className="logged-in">Logged in as: {username}</span>
          <Link to="/" className="header-home-link" aria-label='link-to-home'> <HomeIcon fontSize='large'/> </Link>
         </Toolbar>
       </Container>
