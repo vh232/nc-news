@@ -35,15 +35,13 @@ const ArticleComments = () => {
   }, [isLoading]);
 
   const upVote = (comment_id, event) => {
-    event.preventDefault();
     if (!upvoteClicked && downvoteClicked) {
       setDownvoteClicked(false)
       patchComment(comment_id, {inc_votes: +1})
       setComments((currComments) => {
         return currComments.map((comment) => {
           if (comment.comment_id === comment_id) {
-            console.log('matched')
-            comment.comment_id += 1 
+            comment.votes += 1 
             return comment
           } else {
             return comment;
@@ -57,7 +55,7 @@ const ArticleComments = () => {
         return currComments.map((comment) => {
           if (comment.comment_id === comment_id) {
             console.log('matched')
-            comment.comment_id += 1 
+            comment.votes += 1 
             return comment
           } else {
             return comment;
@@ -68,7 +66,6 @@ const ArticleComments = () => {
       
   
   const downVote = (comment_id, event) => {
-    event.preventDefault()
     if (!downvoteClicked && upvoteClicked) {
     patchComment(comment_id, {inc_votes: -1})
     setUpvoteClicked(false)
@@ -76,7 +73,7 @@ const ArticleComments = () => {
       return currComments.map((comment) => {
         if (comment.comment_id === comment_id) {
           console.log('matched')
-          comment.comment_id -= 1 
+          comment.votes -= 1 
           return comment
         } else {
           return comment;
@@ -90,7 +87,7 @@ const ArticleComments = () => {
       return currComments.map((comment) => {
         if (comment.comment_id === comment_id) {
           console.log('matched')
-          comment.comment_id -= 1 
+          comment.votes -= 1 
           return comment
         } else {
           return comment;
