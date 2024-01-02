@@ -19,20 +19,20 @@ const SingleArticle = () => {
     if (!upvoteClicked && downvoteClicked) {
       setArticle((currArticle) => {
         currArticle.votes += 1
+        console.log(currArticle.votes)
         return currArticle
       })
       setDownvoteClicked(false)
       patchArticle(article_id, {inc_votes: +1})
-      
     } else if (!upvoteClicked && !downvoteClicked) {
       setArticle((currArticle) => {
         currArticle.votes += 1
+        console.log(currArticle.votes)
+        setUpvoteClicked(true)
         return currArticle
       })
-      setUpvoteClicked(true)
       setDownvoteClicked(false)
       patchArticle(article_id, {inc_votes: +1})
-      
     } 
       }
       
@@ -41,6 +41,7 @@ const SingleArticle = () => {
     if (!downvoteClicked && upvoteClicked) {
     setArticle((currArticle) => {
         currArticle.votes -= 1
+        console.log(currArticle.votes)
         return currArticle
       })
     patchArticle(article_id, {inc_votes: -1})
@@ -49,10 +50,10 @@ const SingleArticle = () => {
     } else if (!downvoteClicked && !upvoteClicked) {
       setArticle((currArticle) => {
         currArticle.votes -= 1
+        console.log(currArticle.votes)
         return currArticle
       })
       patchArticle(article_id, {inc_votes: -1})
-    setUpvoteClicked(false)
     setDownvoteClicked(true)
     }
   }
